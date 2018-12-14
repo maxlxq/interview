@@ -3,4 +3,7 @@
 
 [前端面试计划](https://github.com/maxlxq/interview/blob/master/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92.md)
 -- 
+
+[前端工程师_李向前-简历](https://github.com/maxlxq/interview/blob/master/前端工程师_李向前.pdf)
+
 12月5日 归家，等待显示器中，顺便报了个驾校
