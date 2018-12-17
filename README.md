@@ -7,3 +7,5 @@
 [前端工程师_李向前-简历](https://github.com/maxlxq/interview/blob/master/前端工程师_李向前.pdf)
 
 12月5日 归家，等待显示器中，顺便报了个驾校
+
+nothing to do ，倒车入库
