@@ -1011,3 +1011,116 @@ DOM 3级：
 - DOM 验证
 - 扩展DOM核心，支持XML1.0
 
+其他DOM标准
+
+- SVG
+- MathML
+- SMIL
+
+Web浏览器对DOM的支持
+
+主流浏览器每次发布新版本都会改进对DOM的支持
+
+
+
+浏览器对象模型（BOM）
+
+IE3 和 Nescape Navigator 3 有一个共同的特色，就是支持可以访问和操作浏览器窗口的浏览器对象模型（BOM，Browser Object Model）
+
+HTML5 致力于把很多BOM功能写入正是规范。
+
+从根本上讲，BOM只处理浏览器窗口和框架
+
+扩展：
+
+- 弹出新浏览器窗口的功能
+- 移动、缩放和关闭浏览器窗口的功能
+- 提供浏览器想信息的navigator对象
+- 提供浏览器所加载页面的详细信息的location对象
+- 提供用户显示器分辨率详细信息的screen对象
+- 对cookies的支持
+- 像XMLHttpRequest和IE的ActiveXObject这样的自定义对象
+
+小结
+
+JavaScript是一种专为网页交互而设计的脚本语言
+
+- ECMAScript，有ECMA-262定义，提供核心语言功能
+- 文档对象模型 DOM，提供访问和操作网页内容的方法和接口
+- 浏览器对象模型 BOM，提供与浏览器交互的方法和接口
+
+主要浏览器：IE 、FIrefox、Chrome、Safari、Opera
+
+### 第二章 在HTML中使用JavaScript
+
+- 使用\<script\>元素
+- 嵌入脚本与外部脚本
+- 文档模式对JavaScript的影响
+- 考虑禁用JavaScript的场景
+
+使用\<script\>元素
+
+6个属性
+
+- async：可选。立即下载，异步执行
+- charset：可选，通过src属性置顶的代码的字符集
+- defer：可选，延迟至文档完全加载后执行，只对外部脚本文件有效
+- language：废弃
+- src：可选，可执行代码外部文件
+- type：可选，表示编写代码使用的脚本语言的内容类型（MIME类型）
+
+### 第三章 基本概念
+
+- 语法
+- 数据类型
+- 流控制语句
+- 函数
+
+语法
+
+区分大小写
+
+标识符
+
+- 第一个字符必须是字母、下划线或美元符号
+- 其他字符可以是同类型及数字
+
+注释
+
+
+
+严格模式
+
+​	`use strict`
+
+语句
+
+分号`;`, 代码段中建议使用`{}`
+
+关键字和标瘤子
+
+变量
+
+ECMAScript的变量时松散类型的，松散类型指的就是可以保存任何类型的数据。
+
+let、const、var区别：作用域
+
+数据类型
+
+- Undefined
+- Null
+- Boolean
+- Object
+- Number
+- String
+- Symbol
+
+typeof 操作符 判断数据类型，返回字符串
+
+- "undefined" —— 声明未定义
+- "boolean" —— 布尔值
+- "string" —— 字符串
+- "number" —— 数值
+- "object" —— 对象或者null
+- “function“ —— 函数
+
