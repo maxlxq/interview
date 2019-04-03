@@ -1124,3 +1124,23 @@ typeof 操作符 判断数据类型，返回字符串
 - "object" —— 对象或者null
 - “function“ —— 函数
 
+Number类型
+
++0 和 -0 
+
+float 浮点数值
+
+浮点数的最高精度为17位，可以使用Number.EPSILON做精度判断，符合精度的都可认为相等，如下经典案例：0.1+0.2 与 0.3
+
+![image-20190403123250149](./图片资源/Number.EPSILON.png)
+
+浮点数值计算会产生舍入误差问题，有一点需要明确，这是机遇IEEE754数值的浮点计算的通病
+
+数值范围，由于内存限制，ECMAScript并不能保存世界上所有的数值。
+
+最小值：Number.MIN_VALUE
+
+最大值：Number.MAX_VALUE
+
+![image-20190403123748122](./图片资源/MAX_VALUE AND MIN_VALUE.png)
+
