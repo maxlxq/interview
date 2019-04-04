@@ -1144,3 +1144,23 @@ float 浮点数值
 
 ![image-20190403123748122](./图片资源/MAX_VALUE AND MIN_VALUE.png)
 
+NaN（Not a Number）
+
+非数值，表示不等于任何数值的Nember类型，包括它本身
+
+isNaN()函数
+
+表示非数值，都会返回true
+
+isNaN函数会先进行类型转换
+
+数值转换
+
+有3个函数可以把非数值转换为数值：Number()、parseInt()、parseFloat()
+
+undefined会返回NaN
+
+一元加操作符与Number()函数相同
+
+
+
