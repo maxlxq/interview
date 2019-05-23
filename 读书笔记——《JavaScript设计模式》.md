@@ -1012,23 +1012,141 @@ SubClass.prototype.getSubValue = function(){
 
 #### 第 18 章 超级玛丽——状态模式
 
+状态模式（state）： 当一个对象的内部状态发生改变时，会导致其行为的改变，这看起来像是改变了状态。
+
 ##### 18.1 最美图片
 
 ##### 18.2 分支判断的思考
 
+​	对于分支条件内部独立结果的管理，状态模式非常合适，每一种条件作为对象内部的一种状态，面对不同判断结果，它其实就是选择对象内的一种状态。
+
 ##### 18.3 状态对象的实现
+
+举例：[投票结果状态对象]
+
+```javascript
+var Result1State = function() {
+    // 判断结果保存在内部状态中
+    var States = {
+        state0: function() {
+            console.log('第一种情况')
+        },
+        state1: function() {
+            console.log('第二种情况')
+        },
+        state2: function() {
+            console.log('第三种情况')
+        },
+        state3: function() {
+            console.log('第四种情况')
+        },
+    }
+    // 获取某一种状态并执行其对应的方法
+    function show(result) {
+        States['state' + result] && States['state' + result]()
+    }
+    return {
+        // 返回调用状态方法接口
+        show: show
+    }
+}()
+```
+
+![image-20190523233316669](./图片资源/状态模式案例1.png)
 
 ##### 18.4 状态对象演练
 
+​	上述案例展示了状态模式的基本雏形，对于状态模式，主要目的就是**将条件判断的不同结果转化为状态对象的内部状态**。既然是状态对象的内部状态，所以一般作为状态对象内部的私有变量，然后提供一个能够调用状态对象内部状态的接口方法对象，这样当我们需要增加、修改、调用、删除某种状体方法师就会很容易，也方便了我们对状态对象中内部状态的管理。
+
 ##### 18.5 超级玛丽
+
+游戏中，每个动作都需要一种判断，复合动作的条件判断更是加倍开销，所以需要状态模式对其进行优化。
 
 ##### 18.6 状态的优化
 
+判断语句的代码结构、可读性、可维护性都是很糟糕的，对于新动作的添加或者原有动作的修改，成本是很大的，甚至会影响到其他动作。
+
+状态模式解决问题：
+
+1. 创建一个状态对象，内部保存状态变量
+2. 内部封装好每种动作对应的状态
+3. 状态对象返回一个接口对象，可以对内部的状态修改或者调用
+
+案例[超级玛丽]
+
+```javascript
+// 创建超级玛丽状态类
+var MarryState = function() {
+    // 内部状态私有变量
+    var _currentState = {},
+        states = {
+            jump: function() {
+                // 跳跃
+                console.log('jump');
+            },
+            move: function() {
+                // 移动
+                console.log('move');
+            },
+            shoot: function() {
+                // 射击
+                console.log('jump');
+            },
+            squat: function() {
+                // 蹲下
+                console.log('squat');
+            },
+        };
+    // 动作控制类
+    var Action = {
+        // 改变状态方法
+        changeState: function() {
+            // 组合动作通过传递多个参数实现
+            var arg = arguments;
+            // 重置内部状态
+            _currentState = {};
+            // 如果有动作则添加动作
+            if (arg.length) {
+                // 遍历
+                for(var i = 0, len = arg.length; i < len; i++) {
+                    // 向内部状态中添加动作
+                    _currentState[arg[i]] = true
+                }
+            }
+            // 返回动作控制类
+            return this;
+        },
+        // 执行动作
+        goes: function() {
+            console.log('触发一次动作');
+            // 遍历内部状态保存的动作
+            for (var i in _currentState) {
+                states[i] && states[i]();
+            }
+            return this;
+        }
+    }
+    // 返回接口方法 change、gose
+    return {
+        change: Action.changeState,
+        goes: Action.goes
+    }
+}
+```
+
+
+
 ##### 18.7 两种使用方式
+
+![image-20190524010050142](./图片资源/状态模式案例2.png)
+
+![image-20190524010229852](./图片资源/状态模式案例3.png)
 
 ##### 下章剧透
 
 ##### 忆之获
+
+​	**状态模式既是解决程序中臃肿的分支判断语句问题，将每个分支转换为一种状态独立出来，方便每种状态的管理又不至于每次执行时遍历所有分支。在程序中到底产生哪种行为结果，决定于选择哪种状态，而选择何种状态又是在程序运行时决定的。当然，状态模式的最终目的是简化分支判断流程。**
 
 ##### 你问我答
 
