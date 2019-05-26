@@ -342,7 +342,7 @@ methods.addMethods('checkName', function(){
 类式使用
 
 ```javascript
-Function.prototype.addMethod = function(name, fn){
+Function.prototype.addMethods = function(name, fn){
     this.prototype[name] = fn;    // 方法更改一下
     return this;
 }
