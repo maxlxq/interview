@@ -712,7 +712,47 @@ SubClass.prototype.getSubValue = function(){
 };
 ```
 
+###### 2.3.2 创建即继承——构造函数继承
 
+```javascript
+// 构造函数式继承
+// 声明父类
+function SuperClass(id){
+    // 引用类型共有属性
+    this.books = ['JavaScript', 'html', 'css'];
+    // 值类型共有属性
+    this.id = id;
+}
+// 父类声明原型方法
+SuperClass.prototype.showBooks = function(){
+    console.log(this.books);
+}
+// 声明子类
+function SubClass(id){
+    // 继承父类
+    SuperClass.call(this, id);
+}
+// 创建第一个子类的实例
+var instance1 = new SubClass(10);
+// 创建第二个子类的实例
+var instance2 = new SubClass(11);
+
+instance1.books.push('设计模式');
+```
+
+`SuperClass.call(this, id)`是构造函数继承的精华，call可以更改函数的作用环境。
+
+###### 2.3.3 将优点为我所用——组合继承
+
+在子类的构造函数中执行父类构造函数，在子类原型上实例化父类就是组合模式，融合了类式继承和构造函数继承的优点。
+
+###### 2.3.4 洁净的继承者——原型式继承
+
+类式继承的一个封装
+
+###### 2.3.5 如虎添翼——寄生式继承
+
+原型继承的二次封装，处理类的原型
 
 ##### 2.4 老师不止一位——多继承
 
@@ -728,15 +768,95 @@ SubClass.prototype.getSubValue = function(){
 
 ### 第二篇 创建型设计模式
 
+​	创建型设计模式是一类处理对象创建的设计模式，通过某种方式控制对象的创建来避免基本对象创建时可能导致设计上的问题或增加设计上的复杂度。
+
 #### 第 3 章 神奇的魔术师——简单的工厂模式
+
+简单工厂模式（Simple Factory），又叫静态工厂方法，由一个工厂对象决定创建某一种产品对象类的实例。主要用来创建同一类对象。
 
 ##### 3.1 工作中的第一次需求
 
+如果用户输入的内容不符合规范就自定义个警示框警示一句；
+
+输入密码错误时也提示一句；
+
+用户名不存在时也提示，并在警示框中添加一个注册按钮；
+
+登录成功之后，要提示一句：“欢迎回家”
+
+...
+
 ##### 3.2 如果类太多，那么提供一个
+
+为每个类创建基类，创建简单工厂函数，进行查找你需要的工厂对象。
+
+```javascript
+var PopFactory = function(name) {
+    switch(name) {
+        case 'alert':
+            return new LoginAlert();
+        case 'confirm':
+            return new LoginConfirm();
+        case 'prompt':
+            return new LoginPrompt();
+    }
+}
+```
+
+
 
 ##### 3.3 一个对象有时也可以替代许多类
 
+由于LoginAlert、LoginConfirm、LoginPrompt三个类中有很多相同的部分，是可以抽象提取出来共用的，也可以使用简单工厂方式实现他们。
+
+简单工厂模式的理念就是 **创建对象**，提取对象/类中的相似部分，不同的部分做针对性处理，有点类似寄生模式，但是没有父类，无需做任何继承，只需要创建一个对象即可，然后通过对这个对象大量拓展方法和属性，并在最终将对象返回出来。
+
+```javascript
+function createBook(name, time, type) {
+    var o = new Object();
+    o.name = name;
+    o.time = time;
+    o.type = type;
+    o.getName = function(){
+        console.log(this.name);
+    }
+    return o;
+}
+```
+
+像寄生式继承，但是o没有继承任何类或者对象，将三个类要改成一个工厂模式也就很简单了，**抽象相同点【共有属性、原型共有方法】**，针对性处理不同点，如下
+
+```javascript
+function createPop(type, text) {
+    var o = new Object();
+    o.content = text;
+    o.show = function() {
+        // show func
+    };
+    if(type == 'alert'){
+        // alert
+    }
+    if(type == 'prompt'){
+        // prompt
+    }
+    if(type == 'confirm'){
+        // confirm
+    }
+    return o;
+}
+
+var userNameAlert = createPop('alert', '用户名')
+```
+
+
+
 ##### 3.4 你的理解决定你选择的方式
+
+两个工厂模式是由一定区别的
+
+第一种是通过类实例化对象创建的，第二种是通过创建一个对象然后包装增强其属性和功能来实现的。
+
+差别：第一种通过类撞见的对象，如果类继承同一父类，那么父类上的原型方法可以共用；第二种寄生方式创建的对象都是一个新的个体，所以方法不能共用。
 
 ##### 下章剧透
 
@@ -746,11 +866,17 @@ SubClass.prototype.getSubValue = function(){
 
 #### 第 4 章 给我一张名片——工厂方法模式
 
+创建多类产品的实例
+
+本意是说将实际创建对象工作推迟到子类当中
+
 ##### 4.1 广告展现
 
 ##### 4.2 方案的抉择
 
 ##### 4.3 安全模式类
+
+安全类型检查
 
 ##### 4.4 安全的工厂方法
 
@@ -761,6 +887,8 @@ SubClass.prototype.getSubValue = function(){
 ##### 你问我答
 
 #### 第 5 章 出现的都是幻觉——抽象工厂模式
+
+通过对类的工厂抽象使其业务用于对产品类簇的创建，而不负责创建某一类产品的实例。
 
 ##### 5.1 带头模范——抽象类
 
@@ -776,9 +904,13 @@ SubClass.prototype.getSubValue = function(){
 
 #### 第 6 章 分即是合——建造者模式
 
+Builder，将一个复杂对象的构建层与其表示层相互分离，同样的构建过程可采用不同的表示。
+
 ##### 6.1 发布简历
 
 ##### 6.2 创建对象的另一种形式
+
+注重创建细节
 
 ##### 6.3 创建一位应聘者
 
@@ -790,13 +922,25 @@ SubClass.prototype.getSubValue = function(){
 
 #### 第 7 章 语言之魂——原型模式
 
+用原型实例指向创建对象的类，使用于创建新的对象的类共享原型对象的属性以及方法。
+
 ##### 7.1 语言中的原型
+
+JavaScript是基于原型链实现对象之间的继承，这种继承是基于一种对属性或者方法的共享，而不是复制
 
 ##### 7.2 创建一个焦点图
 
+图片轮播类
+
+上下滑动、渐隐切换等等
+
 ##### 7.3 最优的解决方案
 
+将可复用的、可共享的、耗时大的从基类中提出来然后放在其原型中，然后子类通过组合继承或者寄生组合式继承而将方法和属性继承下来，对于子类中那些需要重写的方法进行重写。
+
 ##### 7.4 原型的拓展
+
+原型对象是一个共享的对象，不论是父类的实例对象或者是子类的继承，都是对它的一个指向引用，所以原型对象才不会被共享
 
 ##### 7.5 原型继承
 
@@ -808,9 +952,13 @@ SubClass.prototype.getSubValue = function(){
 
 #### 第 8 章 一个人的寂寞——单例模式
 
+只允许实例化一次的对象类
+
 ##### 8.1 滑动特效
 
 ##### 8.2 命名空间的管理员
+
+namespace
 
 ##### 8.3 模块分明
 
