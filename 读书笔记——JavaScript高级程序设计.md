@@ -4,21 +4,93 @@
 
 ## 第一章 JavaScript简介
 
-### 1.1 JavaScript简史
+### 1.1 JavaScript简史诞生：1995
+
+背景：处理当时由服务器负责的一些输入验证操作
+
+JS之父：Brendan Eich（布兰登·艾奇）
+
+JS实现：
+
+1. 核心（ECMAScript）
+2. 文档对象模型
+3. 浏览器对象模型
+
+扩展：
+
+- 弹出新浏览器窗口的功能
+- 移动、缩放和关闭浏览器窗口的功能
+- 提供浏览器想信息的navigator对象
+- 提供浏览器所加载页面的详细信息的location对象
+- 提供用户显示器分辨率详细信息的screen对象
+- 对cookies的支持
+- 像XMLHttpRequest和IE的ActiveXObject这样的自定义对象
 
 ### 1.2 JavaScript实现
 
 - 1.2.1 ECMAScript
-
 - 1.2.2 文档对象模型（DOM）
 
+Netscape和微软各自开发自己的DHTML，IE4和Netscape Navigator 4浏览器互不兼容，负责制定Web通信标准的W3C开始着手规划DOM
+
+DOM级别
+
+DOM 1级：
+
+- DOM核心[规定如何映射基于XML的文档结构]
+- DOM HTML[添加了针对HTML的对象和方法]
+
+DOM 2级：
+
+- DOM 视图[定义了跟踪不同文档视图的接口]
+- DOM 事件[定义了事件和事件处理的接口]
+- DOM 样式[定义了基于CSS为元素应用样式的接口]
+- DOM 遍历和范围[定义了遍历和操作文档树的接口]
+
+DOM 3级：
+
+- DOM 加载和保存
+- DOM 验证
+- 扩展DOM核心，支持XML1.0
+
+其他DOM标准
+
+- SVG
+- MathML
+- SMIL
+
+Web浏览器对DOM的支持
+
+主流浏览器每次发布新版本都会改进对DOM的支持
+
 - 1.2.3 浏览器对象模型（BOM）
+
+浏览器对象模型（BOM）
+
+IE3 和 Nescape Navigator 3 有一个共同的特色，就是支持可以访问和操作浏览器窗口的浏览器对象模型（BOM，Browser Object Model）
+
+HTML5 致力于把很多BOM功能写入正是规范。
+
+从根本上讲，BOM只处理浏览器窗口和框架
 
 ### 1.3 JavaScript版本
 
 ### 1.4 小结
 
+JavaScript是一种专为网页交互而设计的脚本语言
+
+- ECMAScript，有ECMA-262定义，提供核心语言功能
+- 文档对象模型 DOM，提供访问和操作网页内容的方法和接口
+- 浏览器对象模型 BOM，提供与浏览器交互的方法和接口
+
+主要浏览器：IE 、FIrefox、Chrome、Safari、Opera
+
 ## 第二章 在HTML中使用JavaScript
+
+- 使用\<script\>元素
+- 嵌入脚本与外部脚本
+- 文档模式对JavaScript的影响
+- 考虑禁用JavaScript的场景
 
 ### 2.1 \<script\>元素
 
@@ -40,7 +112,113 @@
 
 ### 2.5 小结
 
+6个属性
+
+- async：可选。立即下载，异步执行
+- charset：可选，通过src属性置顶的代码的字符集
+- defer：可选，延迟至文档完全加载后执行，只对外部脚本文件有效
+- language：废弃
+- src：可选，可执行代码外部文件
+- type：可选，表示编写代码使用的脚本语言的内容类型（MIME类型）
+
 ## 第三章
+
+### 第三章 基本概念
+
+- 语法
+- 数据类型
+- 流控制语句
+- 函数
+
+语法
+
+区分大小写
+
+标识符
+
+- 第一个字符必须是字母、下划线或美元符号
+- 其他字符可以是同类型及数字
+
+注释
+
+
+
+严格模式
+
+​	`use strict`
+
+语句
+
+分号`;`, 代码段中建议使用`{}`
+
+关键字和标瘤子
+
+变量
+
+ECMAScript的变量时松散类型的，松散类型指的就是可以保存任何类型的数据。
+
+let、const、var区别：作用域
+
+数据类型
+
+- Undefined
+- Null
+- Boolean
+- Object
+- Number
+- String
+- Symbol
+
+typeof 操作符 判断数据类型，返回字符串
+
+- "undefined" —— 声明未定义
+- "boolean" —— 布尔值
+- "string" —— 字符串
+- "number" —— 数值
+- "object" —— 对象或者null
+- “function“ —— 函数
+
+Number类型
+
++0 和 -0 
+
+float 浮点数值
+
+浮点数的最高精度为17位，可以使用Number.EPSILON做精度判断，符合精度的都可认为相等，如下经典案例：0.1+0.2 与 0.3
+
+![image-20190403123250149](./图片资源/Number.EPSILON.png)
+
+浮点数值计算会产生舍入误差问题，有一点需要明确，这是机遇IEEE754数值的浮点计算的通病
+
+数值范围，由于内存限制，ECMAScript并不能保存世界上所有的数值。
+
+最小值：Number.MIN_VALUE
+
+最大值：Number.MAX_VALUE
+
+![image-20190403123748122](./图片资源/MAX_VALUE AND MIN_VALUE.png)
+
+NaN（Not a Number）
+
+非数值，表示不等于任何数值的Nember类型，包括它本身
+
+isNaN()函数
+
+表示非数值，都会返回true
+
+isNaN函数会先进行类型转换
+
+数值转换
+
+有3个函数可以把非数值转换为数值：Number()、parseInt()、parseFloat()
+
+undefined会返回NaN
+
+一元加操作符与Number()函数相同
+
+
+
+递增和递减操作符：前置型和后置型
 
 ### 3.1 语法
 
@@ -968,201 +1146,4 @@
 ## 附录 D JavaScript 工具
 
 
-
-## 阅读
-
-### 第一章 JavaScript简介
-
-诞生：1995
-
-背景：处理当时由服务器负责的一些输入验证操作
-
-JS之父：Brendan Eich（布兰登·艾奇）
-
-JS实现：
-
-1. 核心（ECMAScript）
-2. 文档对象模型
-3. 浏览器对象模型
-
-DOM
-
-为什么要用？
-
-Netscape和微软各自开发自己的DHTML，IE4和Netscape Navigator 4浏览器互不兼容，负责制定Web通信标准的W3C开始着手规划DOM
-
-DOM级别
-
-DOM 1级：
-
-- DOM核心[规定如何映射基于XML的文档结构]
-- DOM HTML[添加了针对HTML的对象和方法]
-
-DOM 2级：
-
-- DOM 视图[定义了跟踪不同文档视图的接口]
-- DOM 事件[定义了事件和事件处理的接口]
-- DOM 样式[定义了基于CSS为元素应用样式的接口]
-- DOM 遍历和范围[定义了遍历和操作文档树的接口]
-
-DOM 3级：
-
-- DOM 加载和保存
-- DOM 验证
-- 扩展DOM核心，支持XML1.0
-
-其他DOM标准
-
-- SVG
-- MathML
-- SMIL
-
-Web浏览器对DOM的支持
-
-主流浏览器每次发布新版本都会改进对DOM的支持
-
-
-
-浏览器对象模型（BOM）
-
-IE3 和 Nescape Navigator 3 有一个共同的特色，就是支持可以访问和操作浏览器窗口的浏览器对象模型（BOM，Browser Object Model）
-
-HTML5 致力于把很多BOM功能写入正是规范。
-
-从根本上讲，BOM只处理浏览器窗口和框架
-
-扩展：
-
-- 弹出新浏览器窗口的功能
-- 移动、缩放和关闭浏览器窗口的功能
-- 提供浏览器想信息的navigator对象
-- 提供浏览器所加载页面的详细信息的location对象
-- 提供用户显示器分辨率详细信息的screen对象
-- 对cookies的支持
-- 像XMLHttpRequest和IE的ActiveXObject这样的自定义对象
-
-小结
-
-JavaScript是一种专为网页交互而设计的脚本语言
-
-- ECMAScript，有ECMA-262定义，提供核心语言功能
-- 文档对象模型 DOM，提供访问和操作网页内容的方法和接口
-- 浏览器对象模型 BOM，提供与浏览器交互的方法和接口
-
-主要浏览器：IE 、FIrefox、Chrome、Safari、Opera
-
-### 第二章 在HTML中使用JavaScript
-
-- 使用\<script\>元素
-- 嵌入脚本与外部脚本
-- 文档模式对JavaScript的影响
-- 考虑禁用JavaScript的场景
-
-使用\<script\>元素
-
-6个属性
-
-- async：可选。立即下载，异步执行
-- charset：可选，通过src属性置顶的代码的字符集
-- defer：可选，延迟至文档完全加载后执行，只对外部脚本文件有效
-- language：废弃
-- src：可选，可执行代码外部文件
-- type：可选，表示编写代码使用的脚本语言的内容类型（MIME类型）
-
-### 第三章 基本概念
-
-- 语法
-- 数据类型
-- 流控制语句
-- 函数
-
-语法
-
-区分大小写
-
-标识符
-
-- 第一个字符必须是字母、下划线或美元符号
-- 其他字符可以是同类型及数字
-
-注释
-
-
-
-严格模式
-
-​	`use strict`
-
-语句
-
-分号`;`, 代码段中建议使用`{}`
-
-关键字和标瘤子
-
-变量
-
-ECMAScript的变量时松散类型的，松散类型指的就是可以保存任何类型的数据。
-
-let、const、var区别：作用域
-
-数据类型
-
-- Undefined
-- Null
-- Boolean
-- Object
-- Number
-- String
-- Symbol
-
-typeof 操作符 判断数据类型，返回字符串
-
-- "undefined" —— 声明未定义
-- "boolean" —— 布尔值
-- "string" —— 字符串
-- "number" —— 数值
-- "object" —— 对象或者null
-- “function“ —— 函数
-
-Number类型
-
-+0 和 -0 
-
-float 浮点数值
-
-浮点数的最高精度为17位，可以使用Number.EPSILON做精度判断，符合精度的都可认为相等，如下经典案例：0.1+0.2 与 0.3
-
-![image-20190403123250149](./图片资源/Number.EPSILON.png)
-
-浮点数值计算会产生舍入误差问题，有一点需要明确，这是机遇IEEE754数值的浮点计算的通病
-
-数值范围，由于内存限制，ECMAScript并不能保存世界上所有的数值。
-
-最小值：Number.MIN_VALUE
-
-最大值：Number.MAX_VALUE
-
-![image-20190403123748122](./图片资源/MAX_VALUE AND MIN_VALUE.png)
-
-NaN（Not a Number）
-
-非数值，表示不等于任何数值的Nember类型，包括它本身
-
-isNaN()函数
-
-表示非数值，都会返回true
-
-isNaN函数会先进行类型转换
-
-数值转换
-
-有3个函数可以把非数值转换为数值：Number()、parseInt()、parseFloat()
-
-undefined会返回NaN
-
-一元加操作符与Number()函数相同
-
-
-
-递增和递减操作符：前置型和后置型
 
