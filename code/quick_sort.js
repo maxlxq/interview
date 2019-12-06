@@ -28,7 +28,6 @@ export default class QuickSort {
   quick_sort = (arr, first, last) => {
     if (first >= last) return;
     let [i, j] = [first, last];
-    let key = first;
     let temp = arr[first];
     while (i < j) {
       while (i < j && temp < arr[j]) {
@@ -40,8 +39,7 @@ export default class QuickSort {
       }
       arr[j] = arr[i];
     }
-    key = i;
-    arr[key] = temp
+    arr[i] = temp;
 
     console.log('arr:', arr);
 
