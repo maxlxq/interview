@@ -23,3 +23,35 @@ const quick_sort = nums => {
   let len = nums.length
   qsort(nums, 0, len - 1)
 }
+
+export default class QuickSort {
+  quick_sort = (arr, first, last) => {
+    if (first >= last) return;
+    let [i, j] = [first, last];
+    let key = first;
+    let temp = arr[first];
+    while (i < j) {
+      while (i < j && temp < arr[j]) {
+        j--;
+      }
+      arr[i] = arr[j];
+      while (i < j && arr[i] < temp) {
+        i++;
+      }
+      arr[j] = arr[i];
+    }
+    key = i;
+    arr[key] = temp
+
+    console.log('arr:', arr);
+
+    this.quick_sort(arr, first, key - 1);
+    this.quick_sort(arr, key + 1, last)
+  }
+
+  run(arr) {
+    const len = arr.length;
+    this.quick_sort(arr, 0, len - 1);
+    console.log('result arr:', arr)
+  }
+}
