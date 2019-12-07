@@ -9,8 +9,8 @@ function newFn() {
   const Constructor = [].shift.call(arguments);
   // 让这个obj继承一下Constructor原型链上的东西
   obj.__proto__ = Constructor.prototype;
-  // 借用Constructor方法，将参数赋值
-  Constructor.call(obj, ...arguments);
-  // 返回新生成的对象
-  return obj;
+  // 借用Constructor方法，将参数赋值, 如果有返回值将其赋值给result
+  const result = Constructor.call(obj, ...arguments);
+  // 如果result是返回的对象，则返回result，否则返回新生成的对象
+  return typeof result === 'object' ? result : obj;
 }
