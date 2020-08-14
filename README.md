@@ -1,6 +1,6 @@
 # interview
 
-- [x] Hooks 深入学习
+- [ ] Hooks 深入学习
 leetcode 60题
 《刻意练习》 2/8 part
 
