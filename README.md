@@ -1,13 +1,41 @@
 # interview
 
+----------- 2020全年计划 -----------
+
+- [ ] 开源一个RN项目
+- [ ] 用Flutter改写
+- [ ] 上架到App Store
+- [ ] 前端进阶，整理前端图谱
+- [ ] JS剖析
+- [ ] NodeJS介入开发
+- [ ] mongo使用，并产出使用文档
+- [ ] Redis 学习，并产出文档
+- [ ] Git纯命令行处理工作
+- [ ] 12篇技术博客
+  - [ ] 1. Hook
+  - [ ] 2. Git
+  - [ ] 3. Webpack
+  - [ ] 4. Babel
+  - [ ] 5. Mongo
+  - [ ] 6. Redis
+  - [ ] 7. React
+  - [ ] 8. Vue
+  - [ ] 9. React-Native
+  - [ ] 10. Taro
+  - [ ] 11. Flutter
+  - [ ] 12. TypeScript
+- [ ] React-Navigation 官网部分翻译
+
+-----------  E - N - D  -----------
+
 - [ ] Hooks 深入学习
-leetcode 60题
-《刻意练习》 2/8 part
+- leetcode 60题
+- 《刻意练习》 2/8 part
 
 ------ 分割线2020/08/14 --------
 
-leetcode 50题 记录
-好好研读一下 《刻意练习》 1/8 part
+- leetcode 50题 记录
+- 好好研读一下 《刻意练习》 1/8 part
 
 ------ 分割线2020/07/22 --------
 
