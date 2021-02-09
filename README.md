@@ -1,36 +1,34 @@
 # interview
 
------------ 2020全年计划 -----------
+2021年终于开始了，结束了2020年的消沉，积极面对新的一年。
 
-- [ ] 开源一个RN项目
-- [ ] 用Flutter改写
-- [ ] 上架到App Store
-- [ ] 前端进阶，整理前端图谱
-- [ ] JS剖析
-- [ ] NodeJS介入开发
-- [ ] mongo使用，并产出使用文档
-- [ ] Redis 学习，并产出文档
-- [ ] Git纯命令行处理工作
-- [ ] 12篇技术博客
-  - [ ] 1. Hook
-  - [ ] 2. Git
-  - [ ] 3. Webpack
-  - [ ] 4. Babel
-  - [ ] 5. Mongo
-  - [ ] 6. Redis
-  - [ ] 7. React
-  - [ ] 8. Vue
-  - [ ] 9. React-Native
-  - [ ] 10. Taro
-  - [ ] 11. Flutter
-  - [ ] 12. TypeScript
-- [ ] React-Navigation 官网部分翻译
+首先很抱歉 2020 年没有升职加薪，这点要对自己表示歉意，确实让自己消极了一阵子。不过日子还要继续，所以继续提升自己，让价值继续体现出来。
 
------------  E - N - D  -----------
+之前的一年对自己要求还不够高，所以在技术文章阅读总结上少下了功夫，每天的博客阅读，没有及时留下笔记，这点在年底意识到了，所以开始了自己的 blog 整理。
 
-- [ ] Hooks 深入学习
-- leetcode 60题
-- 《刻意练习》 2/8 part
+个人 blog 搭建，上次动它已经是2017年了，hexo框架搭建，这次改成了 vuepress，入口地址：[maxlxq的blog](https://blog.ahulib.com)
+
+blog 包含了：个人原创文章、面试相关、leetcode题解、笔记类、Demo类
+
+目前主要在笔记类丰富，阅读 JS高程第四版、React源码、ECMA262提案 等
+
+Demo类主要在整合 React-Native 使用的技术，研究 Serverless 技术[使用的腾讯serverless]，研究 next.js 框架[pre-rendering + React，api]
+
+自研 appium 在 React-Native 上的使用[针对测试同学进行特定开发], 自研 detox 对 React-Native 进行e2e测试[针对开发同学进行定制]
+
+前端工程化研究，对 CI/CD 进行配置和部署，包括：Jenkins、GitHub Action、Travis 等
+
+------ 分割线2021/02/09 --------
+
+- [x] Fiber 深入学习
+- [x] leetcode 120题
+- [ ] 《JavaScript高级程序设计》第四版、1-7章
+
+----------------------
+
+- [x] Hooks 深入学习
+- [x] leetcode 60题
+- [x] 《刻意练习》
 
 ------ 分割线2020/08/14 --------
 
@@ -45,8 +43,6 @@
 
 [前端面试计划](https://github.com/maxlxq/interview/blob/master/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92.md)
 -- 
-
-[前端工程师_李向前-简历](https://github.com/maxlxq/interview/blob/master/前端工程师_李向前.pdf)
 
 12月5日 归家，等待显示器中，顺便报了个驾校
 
